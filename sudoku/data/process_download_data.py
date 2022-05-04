@@ -3,39 +3,37 @@ from os.path import exists
 from zipfile import ZipFile
 
 
-def dataset_line_to_list(line):
-    return [int(x) for x in line[13:-6]]
+def dataset_line_to_X_y_formatted(line):
+    return [int(x) for x in line[13:-6]], float(line[-4:])
 
-def generate_dataset(train_size = 1000, test_size = 5000):
+def generate_dataset(size = 1000):
     SOURCE_FILES = [
         'raw/easy.txt', 'raw/medium.txt', 'raw/hard.txt', 'raw/diabolical.txt'
     ]
-    train = []
-    test = []
+    X = []
+    y = []
     for filename in SOURCE_FILES:
         with open(filename) as f:
             for num, line in enumerate(f):
-                if num < train_size/4:
-                    train += [dataset_line_to_list(line)]
-                elif num >= train_size/4 and num-train_size/4 < test_size/4:
-                    test += [dataset_line_to_list(line)]
+                if num < size/4:
+                    X += [dataset_line_to_X_y_formatted(line)[0]]
+                    y += [dataset_line_to_X_y_formatted(line)[1]]
                 else:
                     break
-    np.save('processed/train.npy', np.array(train))
-    np.save('processed/test.npy', np.array(test))
+    np.save('processed/X.npy', np.array(X))
+    np.save('processed/y.npy', np.array(y))
 
-def verify_dataset(train_size, test_size):
-    train = np.load('processed/train.npy')
-    assert train.shape == (train_size, 81)
-    test = np.load('processed/test.npy')
-    assert test.shape == (test_size, 81)
+def verify_dataset(size):
+    X = np.load('processed/X.npy')
+    assert X.shape == (size, 81)
+    y = np.load('processed/y.npy')
+    assert y.shape == (size,)
 
 
 def main():
-    TRAIN_SIZE = 1000
-    TEST_SIZE = 5000
-    generate_dataset(train_size=TRAIN_SIZE, test_size=TEST_SIZE)
-    verify_dataset(TRAIN_SIZE, TEST_SIZE)
+    SIZE = 300000
+    generate_dataset(size = SIZE)
+    verify_dataset(SIZE)
 
 
 if __name__ == '__main__':
