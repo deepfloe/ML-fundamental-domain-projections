@@ -68,7 +68,12 @@ def gradient_ascent_seeded(x,x0, gen_name='neighbourtranspositions'):
 # This is an indicator for when we have found a global max, if n_test suff high.
 
 if __name__ == '__main__':
-    print(gradient_ascent_seeded(np.array([[0,1],[2,0]]),x0='Daniel'))
+    #print(gradient_ascent_seeded(np.array([[0,1],[2,0]]),x0='Daniel'))
+    A=np.array([[0,0,3,0,2,0,6,0,0],[9,0,0,3,0,5,0,0,1],[0,0,1,8,0,6,4,0,0],
+                [0,0,8,1,0,2,9,0,0],[7,0,0,0,0,0,0,0,8],[0,0,6,7,0,8,2,0,0],
+                [0,0,2,6,0,9,5,0,0],[8,0,0,2,0,3,0,0,9],[0,0,5,0,1,0,3,0,0]])
+    print(A)
+    print(gradient_ascent(A), x0='Daniel',gen_name='sudoku')
 
 
 

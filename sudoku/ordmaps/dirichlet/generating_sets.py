@@ -39,8 +39,8 @@ class generators:
                 return []
 
         if self.name == 'sudoku':
-            generators_both=[transposition(0,1,9),transposition(1,2,9),transposition(3,4,9),transposition(4,5,9),
-                            transposition(6,7,9),transposition(7,8,9)]
+            generators_both=[transposition(0,1,9),transposition(1,2,9),transposition(0,2,9),transposition(3,4,9),transposition(4,5,9),
+                            transposition(3,5,9),transposition(6,7,9),transposition(7,8,9),transposition(6,8,9)]
 
 
             if self.perm_axis=='col':
@@ -55,7 +55,7 @@ class generators:
                     return np.transpose(x)
 
                 def transpose2(x):
-                    return [[x[8 - i, 8 - j] for i in range(0, 9)] for j in range(0, 9)]
+                    return np.array([[x[8 - i, 8 - j] for i in range(0, 9)] for j in range(0, 9)])
                 return [transpose1,transpose2]
 
 
