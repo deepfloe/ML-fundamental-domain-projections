@@ -73,7 +73,7 @@ if __name__ == '__main__':
                 [0,0,8,1,0,2,9,0,0],[7,0,0,0,0,0,0,0,8],[0,0,6,7,0,8,2,0,0],
                 [0,0,2,6,0,9,5,0,0],[8,0,0,2,0,3,0,0,9],[0,0,5,0,1,0,3,0,0]])
     print(A)
-    print(gradient_ascent(A), x0='Daniel',gen_name='sudoku')
+    print(gradient_ascent_seeded(A, x0='Daniel',gen_name='sudoku'))
 
 
 
