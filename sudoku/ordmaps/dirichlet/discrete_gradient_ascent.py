@@ -1,8 +1,8 @@
 import numpy as np
 import sys
 sys.path.append('../')
-from generating_sets import *
-from matrix_permutation_auxiliaryfunctions import *
+from sudoku.ordmaps.dirichlet.generating_sets import *
+from sudoku.ordmaps.matrix_permutation_auxiliaryfunctions import *
 
 from functools import cmp_to_key #For user defined sorting
 #from minimise_angle.davidnewordmap import davidnew
