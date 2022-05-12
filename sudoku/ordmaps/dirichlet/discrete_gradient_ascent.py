@@ -67,6 +67,10 @@ def gradient_ascent_seeded(x,x0, gen_name='neighbourtranspositions'):
 #We permute our original matrix n_tests times and see how often we end up at the same local max.
 # This is an indicator for when we have found a global max, if n_test suff high.
 
+def dirichlet_ord(A):
+    return gradient_ascent_seeded(A, x0='Daniel',gen_name='sudoku')
+
+
 if __name__ == '__main__':
     #print(gradient_ascent_seeded(np.array([[0,1],[2,0]]),x0='Daniel'))
     A=np.array([[0,0,3,0,2,0,6,0,0],[9,0,0,3,0,5,0,0,1],[0,0,1,8,0,6,4,0,0],
